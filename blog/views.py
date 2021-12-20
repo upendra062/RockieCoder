@@ -6,3 +6,8 @@ def home(index):
 
 def blog(index):
     return HttpResponse('This is blog')
+
+
+
+def rockie(index):
+    return HttpResponse('This is rockie here')
