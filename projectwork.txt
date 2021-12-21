@@ -1,0 +1,31 @@
+This command will make a folder RockyCoder and inside it you find manage.py and 
+rockycoder folder. Inside folder their are 5 python or .py files
+--------------------------------
+__init__,asgi,settings,urls,wsgi
+--------------------------------
+
+-------------------------------------
+django-admin startproject RockyCoder
+--------------------------------------
+
+close your vscode and open RockyCoder which inside RockyCoder.
+
+
+This command will make folder name blog inside there is migrations(__init__.py) folder and 
+python file is created (__init__,admin,apps,models,tests,views python files are created)
+-----------------------------------------------------------------------------------------
+python manage.py startapp blog
+
+
+install virtualenv packages.
+-------------------------------
+pip install virtualenv
+
+
+command will install all the packages in requirements.txt
+-----------------------------------------------------------
+virtualenv RockyCoder
+
+
+
+conda update -n base -c defaults conda
