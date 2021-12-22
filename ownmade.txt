@@ -1,0 +1,18 @@
+migrations 
+means ap kuch jankari django ko detai hai database bananai k ussai migrations kehte hai.
+
+migrate
+means jo migration bana uske bases pai databases mai actual change karna.
+
+
+
+
+by below command we can access database by localhost:8000/admin
+python manage.py createsuperuser
+
+
+
+localhost:8000/admin
+username: rocky	
+password:rocky
+email is created.
