@@ -17,7 +17,9 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/"><h6 >Rocky Block</h6></a>
+      <a class="navbar-brand" href="/">
+        <h6>Rocky Block</h6>
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
         aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,37 +27,62 @@
       <div class="collapse navbar-collapse" id="navbarScroll">
         <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/"><h6 >Home</h6></a>
+            <a class="nav-link" aria-current="page" href="/">
+              <h6>Home</h6>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about"><h6 >About</h6></a>
+            <a class="nav-link" href="/about">
+              <h6>About</h6>
+            </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/blog"><h6 >Blog</h6></a>
+            <a class="nav-link" href="/blog">
+              <h6>Blog</h6>
+            </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="/contact"><h6 >Contact</h6></a>
+            <a class="nav-link" href="/contact">
+              <h6>Contact</h6>
+            </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/own"><h6 >Test</h6></a>
+            <a class="nav-link" href="/own">
+              <h6>Test</h6>
+            </a>
           </li>
 
         </ul>
 
-        <a href="/" role="button" target="_blank" class="btn btn-outline-success me-1">Home</a>
+        <!-- <a href="/" role="button" target="_blank" class="btn btn-outline-success me-1">Home</a>
         <a href="/about" role="button" target="_blank" class="btn btn-outline-success me-1">About</a>
         <a href="/blog" role="button" target="_blank" class="btn btn-outline-success me-1">Blog</a>
         <a href="/contact" role="button" target="_blank" class="btn btn-outline-success me-1">Contact</a>
-        <a href="/own" role="button" target="_blank" class="btn btn-outline-success me-1">Test</a>
+        <a href="/own" role="button" target="_blank" class="btn btn-outline-success me-1">Test</a> -->
         <form method="get" action="search" class="d-flex m-1">
-          <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" name="query" id="query">
+          <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" name="query"
+            id="query">
           <button class="btn btn-outline-success" type="submit">Search</button>
-         
+          
+          <!-- Button trigger SignUp modal -->
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupmodal">
+            SignUp
+          </button> -->
+        
         </form>
-
-        <a href="/admin" role="button" target="_blank" class="btn btn-outline-success me-1">Admin-Panel</a>
+        <!-- <a href="/admin" role="button" target="_blank" class="btn btn-outline-success me-1">Admin-Panel</a> -->
+       
+        <!-- Button trigger login modal -->
+        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#loginmodal">
+          Login
+        </button>
+       
+        <!-- Button trigger SignUp modal -->
+        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#signupmodal">
+          SignUp
+        </button>
 
       </div>
     </div>
@@ -67,6 +94,115 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
   {% endfor %}
+
+
+
+
+
+  <!--SignUp Modal -->
+  <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="signupmodal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="signupmodaltitle">Sign Up Now</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="email" class="form-control" id="username" name="username" aria-describedby="emailHelp"
+                placeholder="Choose a unique username">
+              <!-- <div id="emailHelp" class="form-text">choose a unique username</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="fname" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="fname" class="fname" aria-describedby="emailHelp"
+                placeholder="Enter your first name">
+              <!-- <div id="emailHelp" class="form-text">Enter your first name here</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="lname" class="form-label">Last Name</label>
+              <input type="email" class="form-control" id="lname" aria-describedby="emailHelp"
+                placeholder="Enter your last name">
+              <!-- <div id="email" class="form-text">Enter your last name here</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                placeholder="Enter your email here">
+              <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="pass1" class="form-label">Choose a Password</label>
+              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose your password">
+            </div>
+            <div class="mb-3">
+              <label for="pass2" class="form-label">Confirm Password</label>
+              <input type="password" class="form-control" id="pass2" class="pass2"
+                placeholder="Enter your password again">
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary text-center">Signup</button>
+          </form>
+
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup end here -->
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginmodaltitle">Login Here</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <form>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input type="email" class="form-control" id="loginusername" name="username" aria-describedby="emailHelp"
+                placeholder="Enter your username">
+              <!-- <div id="emailHelp" class="form-text">choose a unique username</div> -->
+            </div>
+            <div class="mb-3">
+              <label for="pass" class="form-label">Enter Your Password</label>
+              <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter your password">
+            </div>
+
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">login</button>
+          </form>
+
+        </div>
+
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+  <!-- Login end here -->
 
   {% block body %}
   {% endblock body %}
@@ -84,4 +220,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
 </body>
-
