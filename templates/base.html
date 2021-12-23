@@ -65,30 +65,47 @@
           <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search" name="query"
             id="query">
           <button class="btn btn-outline-success" type="submit">Search</button>
-          
+
           <!-- Button trigger SignUp modal -->
-          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupmodal">
+          <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal">
             SignUp
           </button> -->
-        
+
         </form>
-        <!-- <a href="/admin" role="button" target="_blank" class="btn btn-outline-success me-1">Admin-Panel</a> -->
-       
+        <a href="/admin" role="button" target="_blank" class="btn btn-outline-success me-1">Admin-Panel</a>
+
+
+        {% if user.is_authenticated %}
+        <ul class="btn btn-outline-success me-1">
+        {% comment %} <ul class="navbar-nav mr-2"> {% endcomment %}
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href='#' id="navbarDropdown" role="button" data-toggle="dropdown"> Welcome {{request.user}}</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="btn btn-outline-success me-1"class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </li>
+              </ul>
+              </div>
+        {% else %}
+
         <!-- Button trigger login modal -->
-        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#loginmodal">
+        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#loginModal">
           Login
         </button>
-       
+
         <!-- Button trigger SignUp modal -->
-        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#signupmodal">
+        <button type="button" class="btn btn-outline-success me-1" data-bs-toggle="modal" data-bs-target="#signupModal">
           SignUp
         </button>
+        {% endif %}
+
+
 
       </div>
     </div>
   </nav>
 
-  {% for message in messages%}
+  {% for message in messages %}
   <div class="alert alert-{{ message.tags }} mb-0 alert-dismissible fade show" role="alert">
     <strong>Message: </strong> {{ message }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -100,54 +117,56 @@
 
 
   <!--SignUp Modal -->
-  <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="signupmodal" aria-hidden="true">
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="signupmodaltitle">Sign Up Now</h5>
+          <h5 class="modal-title" id="signupModalTitle">Sign Up Now</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
-          <form>
+          <form action="/signup" method='post'>
+            {% csrf_token %}
             <div class="mb-3">
               <label for="username" class="form-label">Username</label>
-              <input type="email" class="form-control" id="username" name="username" aria-describedby="emailHelp"
-                placeholder="Choose a unique username">
+              <input type="text" class="form-control" id="username" name="username"
+                placeholder="Choose a unique username (Lowercase & alphnumeric)" required>
               <!-- <div id="emailHelp" class="form-text">choose a unique username</div> -->
             </div>
             <div class="mb-3">
               <label for="fname" class="form-label">First Name</label>
-              <input type="text" class="form-control" id="fname" class="fname" aria-describedby="emailHelp"
-                placeholder="Enter your first name">
+              <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your first name"
+                required>
               <!-- <div id="emailHelp" class="form-text">Enter your first name here</div> -->
             </div>
             <div class="mb-3">
               <label for="lname" class="form-label">Last Name</label>
-              <input type="email" class="form-control" id="lname" aria-describedby="emailHelp"
-                placeholder="Enter your last name">
+              <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name"
+                required>
               <!-- <div id="email" class="form-text">Enter your last name here</div> -->
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
-                placeholder="Enter your email here">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email here"
+                required>
               <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3">
               <label for="pass1" class="form-label">Choose a Password</label>
-              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose your password">
+              <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Choose your password"
+                required>
             </div>
             <div class="mb-3">
               <label for="pass2" class="form-label">Confirm Password</label>
-              <input type="password" class="form-control" id="pass2" class="pass2"
-                placeholder="Enter your password again">
+              <input type="password" class="form-control" id="pass2" name="pass2"
+                placeholder="Enter your password again" required>
             </div>
 
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+            </div>  -->
+            {% csrf_token %}
             <button type="submit" class="btn btn-primary text-center">Signup</button>
           </form>
 
@@ -164,31 +183,33 @@
 
 
   <!-- Login Modal -->
-  <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginmodaltitle">Login Here</h5>
+          <h5 class="modal-title" id="loginModalTitle">Login Here</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
 
-          <form>
+          <form action="/login" method='post'>
+            {% csrf_token %}
             <div class="mb-3">
-              <label for="username" class="form-label">Username</label>
-              <input type="email" class="form-control" id="loginusername" name="username" aria-describedby="emailHelp"
-                placeholder="Enter your username">
+              <label for="loginusername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="loginusername" name="loginusername"
+                aria-describedby="emailHelp" placeholder="Enter your username" required>
               <!-- <div id="emailHelp" class="form-text">choose a unique username</div> -->
             </div>
             <div class="mb-3">
               <label for="pass" class="form-label">Enter Your Password</label>
-              <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter your password">
+              <input type="password" class="form-control" id="loginpassword" name="loginpassword"
+                placeholder="Enter your password" required>
             </div>
 
-            <div class="mb-3 form-check">
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-primary">login</button>
           </form>
 

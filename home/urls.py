@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from home import views
 
 urlpatterns = [
@@ -8,4 +8,7 @@ urlpatterns = [
         path('about', views.about, name='about'),
         path('own', views.own, name='own'),
         path('search', views.search, name='search'),
+        path('signup', views.handleSignUp, name="handleSignUp"),
+        path('login', views.handleLogin, name="handleLogin"),
+        path('logout', views.handleLogout, name="handleLogout"),
 ]
